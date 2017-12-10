@@ -8,7 +8,7 @@ export default class Day1Component extends Vue {
     part2: number = 0;
 
     mounted() {
-        fetch('./day1/input.txt', { mode: 'no-cors' })
+        fetch('./day1/input.txt')
             .then(response => response.text() as Promise<string>)
             .then(data => {
                 this.input = data;
