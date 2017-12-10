@@ -21,15 +21,8 @@ export default class Day1Component extends Vue {
         var nextDigit = (i: number) => i % this.input.length,
             next = part === 1
                 ? (i: number) => nextDigit(i + 1)
-                : (i: number) => nextDigit(i + this.input.length / 2),
-            result = 0;
+                : (i: number) => nextDigit(i + this.input.length / 2);
 
-        for (var i = 0; i < this.input.length; i++) {
-            if (this.input[i] === this.input[next(i)]) {
-                result += parseInt(this.input[i]);
-            }
-        }
-
-        return result;
+        return [...this.input].reduce((acc, c, i, arr) => c == this.input[next(i)] ? acc + parseInt(c) : acc, 0);
     }
 }
