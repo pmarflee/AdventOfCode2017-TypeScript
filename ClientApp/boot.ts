@@ -6,7 +6,8 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: '/', component: require('./components/home/home.vue') },
-    { path: '/day1', component: require('./components/day1/day1.vue') }
+    { path: '/day1', component: require('./components/day1/day1.vue') },
+    { path: '/day2', component: require('./components/day2/day2.vue') }
 ];
 
 new Vue({
