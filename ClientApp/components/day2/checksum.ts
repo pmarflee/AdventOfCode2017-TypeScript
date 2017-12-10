@@ -1,4 +1,6 @@
-﻿export default class Checksum {
+﻿import Utils from '../../utils';
+
+export default class Checksum {
     static calculate(input: number[][], getResult: (line: number[]) => number): number {
         return input.reduce((acc, c) => acc + getResult(c), 0);
     }
@@ -13,13 +15,9 @@
     }
 
     static evenlydivide(line: number[]): number {
-        for (var i = 0; i < line.length; i++) {
-            for (var j = 0; j < line.length; j++) {
-                if (i !== j && line[i] % line[j] === 0) {
-                    return line[i] / line[j];
-                }
-            }
+        for (let [a, b] of Utils.pairs(line)) {
+            if (a % b === 0) return a / b;
         }
-        return 0;
+        throw new Error('No pair of numbers was evenly divisible');
     }
 }
