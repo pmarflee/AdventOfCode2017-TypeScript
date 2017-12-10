@@ -22,15 +22,15 @@ export default class Day2Component extends Vue {
             [9, 4, 7, 3],
             [3, 8, 6, 5]
         ];
-        this.part1test = Checksum.calculate(part1TestInput, 1);
-        this.part2test = Checksum.calculate(part2TestInput, 2);
+        this.part1test = Checksum.calculate(part1TestInput, Checksum.minmaxdiff);
+        this.part2test = Checksum.calculate(part2TestInput, Checksum.evenlydivide);
         fetch('./day2/input.txt')
             .then(response => response.text() as Promise<string>)
             .then(data => {
                 this.input = data;
                 let numbers = Parser.parse(data);
-                this.part1 = Checksum.calculate(numbers, 1);
-                this.part2 = Checksum.calculate(numbers, 2);
+                this.part1 = Checksum.calculate(numbers, Checksum.minmaxdiff);
+                this.part2 = Checksum.calculate(numbers, Checksum.evenlydivide);
             });
     }
 }
