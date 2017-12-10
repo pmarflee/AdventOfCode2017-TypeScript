@@ -18,6 +18,11 @@
                             <span class="glyphicon glyphicon-home"></span> Home
                         </router-link>
                     </li>
+                    <li>
+                        <router-link to="/day1" :exact="true">
+                            <span class="glyphicon glyphicon-calendar"></span> Day 1
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </div>
