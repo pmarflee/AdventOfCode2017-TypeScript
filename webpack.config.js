@@ -13,6 +13,7 @@ module.exports = (env) => {
         entry: { 'main': './ClientApp/boot.ts' },
         module: {
             rules: [
+                { test: /\.tsx?$/, loader: 'ts-loader' },
                 { test: /\.vue$/, include: /ClientApp/, loader: 'vue-loader', options: { esModule: false } },
                 { test: /\.css$/, use: isDevBuild ? [ 'style-loader', 'css-loader' ] : ExtractTextPlugin.extract({ use: 'css-loader?minimize' }) },
                 { test: /\.(png|jpg|jpeg|gif|svg)$/, use: 'url-loader?limit=25000' }

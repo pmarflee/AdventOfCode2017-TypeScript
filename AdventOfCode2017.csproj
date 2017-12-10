@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\components\day1\checksum.ts" />
     <None Remove="ClientApp\components\day1\day1.ts" />
   </ItemGroup>
 
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\components\day1\checksum.ts" />
     <TypeScriptCompile Include="ClientApp\components\day1\day1.ts" />
   </ItemGroup>
 

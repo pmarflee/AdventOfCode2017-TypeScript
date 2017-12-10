@@ -7,4 +7,5 @@
     </div>
 </template>
 
+<script lang="ts" src="./checksum.ts"></script>
 <script lang="ts" src="./day1.ts"></script>
