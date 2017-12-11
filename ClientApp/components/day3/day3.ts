@@ -1,14 +1,16 @@
 ﻿import Vue from 'vue';
-import { Component } from 'vue-property-decorator';
+import { Component, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Day2Component extends Vue {
     input: number = 1;
     data: any = {}; 
+    position: [number, number] = [0, 0];
 
-    get position(): [number, number] {
+    @Watch('input')
+    inputChanged(event: Event) {
         var x = 0, y = 0,
-            pos: [number, number] = [x, y],
+            pos: [number, number] = [0, 0],
             direction = 0, step = 1;
 
         for (var i = 1, j = 1; i <= this.input; i++) {
@@ -27,7 +29,7 @@ export default class Day2Component extends Vue {
             }
         }
 
-        return pos;
+        this.position = pos;
     }
 
     score(position: [number, number]): number {
