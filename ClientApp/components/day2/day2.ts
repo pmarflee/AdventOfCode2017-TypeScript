@@ -28,7 +28,7 @@ export default class Day2Component extends Vue {
             .then(response => response.text() as Promise<string>)
             .then(data => {
                 this.input = data;
-                let numbers = Utils.parse(data, undefined, '\t');
+                let numbers = Utils.parseAsNumbers(data, undefined, '\t');
                 this.part1 = Checksum.calculate(numbers, Checksum.minmaxdiff);
                 this.part2 = Checksum.calculate(numbers, Checksum.evenlydivide);
             });
