@@ -4,7 +4,7 @@ import Utils from '../../utils';
 
 @Component
 export default class Day4Component extends Vue {
-    input: string = '';
+    loaded: boolean = false;
     part1: number = 0;
     part2: number = 0;
 
@@ -12,9 +12,10 @@ export default class Day4Component extends Vue {
         fetch('./day4/input.txt')
             .then(response => response.text() as Promise<string>)
             .then(data => {
-                this.input = data;
-                this.part1 = this.countValidPasscodes(word => word);
-                this.part2 = this.countValidPasscodes(word => [...word].sort().toString());
+                var words = Utils.parseAsWords(data, undefined, ' ');
+                this.part1 = this.countValidPasscodes(words, word => word);
+                this.part2 = this.countValidPasscodes(words, word => [...word].sort().toString());
+                this.loaded = true;
             });
     }
 
@@ -27,9 +28,7 @@ export default class Day4Component extends Vue {
         }
     } 
 
-    countValidPasscodes(getKey: (word: string) => string): number {
-        return Utils.parseAsWords(this.input, undefined, ' ')
-            .filter(line => line.every(this.mustBeAValidPasscode({}, getKey)))
-            .length;
+    countValidPasscodes(words: string[][], getKey: (word: string) => string): number {
+        return words.filter(line => line.every(this.mustBeAValidPasscode({}, getKey))).length;
     }
 }
