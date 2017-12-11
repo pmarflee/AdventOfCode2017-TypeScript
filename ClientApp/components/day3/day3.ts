@@ -9,7 +9,7 @@ interface Square {
 
 @Component
 export default class Day3Component extends Vue {
-    input: number = /*361527*/10;
+    input: number = 361527;
     part1: number = 0;
     part2: number = 0;
 
