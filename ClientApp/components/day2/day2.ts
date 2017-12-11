@@ -1,6 +1,6 @@
 ﻿import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
-import Parser from './parser';
+import Utils from '../../utils';
 import Checksum from './checksum';
 
 @Component
@@ -28,7 +28,7 @@ export default class Day2Component extends Vue {
             .then(response => response.text() as Promise<string>)
             .then(data => {
                 this.input = data;
-                let numbers = Parser.parse(data);
+                let numbers = Utils.parse(data, undefined, '\t');
                 this.part1 = Checksum.calculate(numbers, Checksum.minmaxdiff);
                 this.part2 = Checksum.calculate(numbers, Checksum.evenlydivide);
             });
