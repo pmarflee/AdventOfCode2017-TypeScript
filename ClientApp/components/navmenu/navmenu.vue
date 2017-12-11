@@ -33,6 +33,11 @@
                             <span class="glyphicon glyphicon-calendar"></span> Day 3
                         </router-link>
                     </li>
+                    <li>
+                        <router-link to="/day4" :exact="true">
+                            <span class="glyphicon glyphicon-calendar"></span> Day 4
+                        </router-link>
+                    </li>
                 </ul>
             </div>
         </div>
