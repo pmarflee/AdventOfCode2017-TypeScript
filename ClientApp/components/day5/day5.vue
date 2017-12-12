@@ -1,9 +1,17 @@
 ﻿<template>
     <div>
         <h1>Day 5</h1>
-        <h2 v-if="loaded">Part 1: {{ part1 }}</h2>
-        <h2 v-if="loaded">Part 2: {{ part2 }}</h2>
-        <p v-else>Loading...</p>
+        <div>
+            <form>
+                <div class="form-group">
+                    <label for="testinput">Input</label>
+                    <input id="testinput" type="text" class="form-control" placeholder="Enter test input" v-model="testinput"> 
+                </div>
+                <div>Part 1 (Test): {{ testpart1 }}</div>
+                <div>Part 1: {{ part1 }}</div>
+                <div>Part 2: {{ part2 }}</div>
+            </form>
+        </div>
     </div>
 </template>
 
