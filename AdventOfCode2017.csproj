@@ -14,6 +14,7 @@
     <None Remove="ClientApp\components\day2\day2.ts" />
     <None Remove="ClientApp\components\day3\day3.ts" />
     <None Remove="ClientApp\components\day4\day4.ts" />
+    <None Remove="ClientApp\components\day5\day5.ts" />
     <None Remove="ClientApp\utils.ts" />
   </ItemGroup>
 
@@ -31,6 +32,7 @@
     <TypeScriptCompile Include="ClientApp\components\day2\checksum.ts" />
     <TypeScriptCompile Include="ClientApp\components\day2\day2.ts" />
     <TypeScriptCompile Include="ClientApp\components\day3\day3.ts" />
+    <TypeScriptCompile Include="ClientApp\components\day5\day5.ts" />
     <TypeScriptCompile Include="ClientApp\components\day4\day4.ts" />
     <TypeScriptCompile Include="ClientApp\utils.ts" />
   </ItemGroup>

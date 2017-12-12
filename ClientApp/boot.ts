@@ -10,6 +10,7 @@ const routes = [
     { path: '/day2', component: require('./components/day2/day2.vue') },
     { path: '/day3', component: require('./components/day3/day3.vue') },
     { path: '/day4', component: require('./components/day4/day4.vue') },
+    { path: '/day5', component: require('./components/day5/day5.vue') },
 ];
 
 new Vue({

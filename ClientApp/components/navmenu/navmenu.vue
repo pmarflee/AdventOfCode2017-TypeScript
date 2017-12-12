@@ -11,31 +11,16 @@
                 <a class="navbar-brand" href="/">Advent of Code 2017</a>
             </div>
             <div class="clearfix"></div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="overflow: auto;">
                 <ul class="nav navbar-nav">
                     <li>
                         <router-link to="/" :exact="true">
                             <span class="glyphicon glyphicon-home"></span> Home
                         </router-link>
                     </li>
-                    <li>
-                        <router-link to="/day1" :exact="true">
-                            <span class="glyphicon glyphicon-calendar"></span> Day 1
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="/day2" :exact="true">
-                            <span class="glyphicon glyphicon-calendar"></span> Day 2
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="/day3" :exact="true">
-                            <span class="glyphicon glyphicon-calendar"></span> Day 3
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link to="/day4" :exact="true">
-                            <span class="glyphicon glyphicon-calendar"></span> Day 4
+                    <li v-for="day in 31">
+                        <router-link :to="`/day${day}`" :exact="true">
+                            <span class="glyphicon glyphicon-calendar"></span> Day {{day}}
                         </router-link>
                     </li>
                 </ul>
