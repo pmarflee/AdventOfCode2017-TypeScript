@@ -11,22 +11,40 @@
                 <a class="navbar-brand" href="/">Advent of Code 2017</a>
             </div>
             <div class="clearfix"></div>
-            <div class="navbar-collapse collapse" style="overflow: auto;">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <router-link to="/" :exact="true">
-                            <span class="glyphicon glyphicon-home"></span> Home
-                        </router-link>
-                    </li>
-                    <li v-for="day in 31">
-                        <router-link :to="`/day${day}`" :exact="true">
-                            <span class="glyphicon glyphicon-calendar"></span> Day {{day}}
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
+            <vue-scrollbar classes="my-scrollbar" ref="Scrollbar">
+                <div class="navbar-collapse collapse scroll-me">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <router-link to="/" :exact="true">
+                                <span class="glyphicon glyphicon-home"></span> Home
+                            </router-link>
+                        </li>
+                        <li v-for="day in 31">
+                            <router-link :to="`/day${day}`" :exact="true">
+                                <span class="glyphicon glyphicon-calendar"></span> Day {{day}}
+                            </router-link>
+                        </li>
+                    </ul>
+                </div>
+            </vue-scrollbar>
         </div>
     </div>
 </template>
 
 <style src="./navmenu.css" />
+
+<style>
+    /* Vue JS Scrollbar */
+
+    /*The Wrapper*/
+    .my-scrollbar {
+        width: 35%;
+        min-width: 300px;
+        max-height: 650px;
+    }
+
+    /*The Content*/
+    .scroll-me {
+        min-width: 300px;
+    }
+</style>
