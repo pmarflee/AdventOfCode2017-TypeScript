@@ -30,12 +30,12 @@ export default class Day5Component extends Vue {
     getSteps(input: number[]): number {
         var steps = 0, position = 0;
 
-        do {
+        while (position < input.length) {
             let next = position + input[position];
             input[position] = input[position] + 1;
             position = next;
             steps++;
-        } while (position < input.length);
+        } 
 
         return steps;
     }

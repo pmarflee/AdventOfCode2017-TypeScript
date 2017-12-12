@@ -7,6 +7,7 @@
     }
     static parse<T>(input: string, lineSeparator: string = '\r\n', wordSeparator: string,
         wordParser: (word: string) => T): T[][] {
+        if (!input) return [[]];
         return input.split('\r\n').map(line => line.split(wordSeparator).map(word => wordParser(word)));
     }
     static *pairs(input: number[]) {
