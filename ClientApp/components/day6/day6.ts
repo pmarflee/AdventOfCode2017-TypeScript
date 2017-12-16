@@ -2,6 +2,11 @@
 import { Component, Watch } from 'vue-property-decorator';
 import Utils from '../../utils';
 
+interface IState {
+    cycles: number,
+    history: {}
+}
+
 @Component
 export default class Day6Component extends Vue {
     loaded: boolean = false;
@@ -10,6 +15,9 @@ export default class Day6Component extends Vue {
     part1: number = 0;
     testpart2: number = 0;
     part2: number = 0;
+    getResultPart1: (state: IState, input: number[]) => number = (state, input) => state.cycles;
+    getResultPart2: (state: IState, input: number[]) => number = (state, input) =>
+        state.cycles - state.history[this.toCsv(input)];
 
     mounted() {
         this.testInputChanged();
@@ -17,8 +25,8 @@ export default class Day6Component extends Vue {
             .then(response => response.text() as Promise<string>)
             .then(data => {
                 var numbers = this.parse(data, '\t');
-                this.part1 = this.solve(numbers);
-                this.part2 = 0;
+                this.part1 = this.solve(numbers, this.getResultPart1);
+                this.part2 = this.solve(numbers, this.getResultPart2);
                 this.loaded = true;
             });
     }
@@ -26,29 +34,29 @@ export default class Day6Component extends Vue {
     @Watch('testinput')
     testInputChanged() {
         var numbers = this.parse(this.testinput, ' ');
-        this.testpart1 = this.solve(numbers);
-        this.testpart2 = 0;
+        this.testpart1 = this.solve(numbers, this.getResultPart1);
+        this.testpart2 = this.solve(numbers, this.getResultPart2);
     }
 
     parse(input: string, separator: string): number[] {
         return Utils.parseAsNumbers(input, undefined, separator)[0];
     }
 
-    solve(input: number[]): number {
-        var history = {}, redistributions = 0;
+    solve(input: number[], getResult: (state: IState, input: number[]) => number): number {
+        var state: IState = { cycles: 0, history: {} },
+            getNextIndex = (i: number) => this.getNextIndex(i, input.length);
         do {
-            history[this.toCsv(input)] = 1;
+            state.history[this.toCsv(input)] = state.cycles;
             var bank = this.getBankWithMostBlocks(input),
-                getNextIndex = (i: number) => this.getNextIndex(i, input.length),
                 index = getNextIndex(bank.i);
             input[bank.i] = 0;
             for (var i = 0; i < bank.n; i++) {
                 input[index] = input[index] + 1;
                 index = getNextIndex(index);
             }
-            redistributions++;
-        } while (!history[this.toCsv(input)])
-        return redistributions;
+            state.cycles++;
+        } while (!state.history[this.toCsv(input)])
+        return getResult(state, input);
     }
 
     toCsv(input: number[]): string {
