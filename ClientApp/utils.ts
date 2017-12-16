@@ -17,4 +17,8 @@
             }
         }
     }
+
+    static clone<T>(input: T[]): T[] {
+        return input.slice(0);
+    }
 }

@@ -19,8 +19,8 @@ export default class Day5Component extends Vue {
             .then(response => response.text() as Promise<string>)
             .then(data => {
                 var parsed = Utils.parseAsNumbers(data, undefined, ' ').map(line => line[0]);
-                this.part1 = this.getSteps(parsed.slice(0), this.getNextOffsetPart1);
-                this.part2 = this.getSteps(parsed.slice(0), this.getNextOffsetPart2);
+                this.part1 = this.getSteps(Utils.clone(parsed), this.getNextOffsetPart1);
+                this.part2 = this.getSteps(Utils.clone(parsed), this.getNextOffsetPart2);
                 this.loaded = true;
             });
     }
@@ -28,8 +28,8 @@ export default class Day5Component extends Vue {
     @Watch('testinput')
     testInputChanged() {
         var parsed = Utils.parseAsNumbers(this.testinput, undefined, ' ')[0];
-        this.testpart1 = this.getSteps(parsed.slice(0), this.getNextOffsetPart1);
-        this.testpart2 = this.getSteps(parsed.slice(0), this.getNextOffsetPart2);
+        this.testpart1 = this.getSteps(Utils.clone(parsed), this.getNextOffsetPart1);
+        this.testpart2 = this.getSteps(Utils.clone(parsed), this.getNextOffsetPart2);
     }
 
     getSteps(input: number[], nextOffset: (offset: number) => number): number {
