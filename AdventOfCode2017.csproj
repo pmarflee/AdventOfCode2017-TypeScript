@@ -16,6 +16,7 @@
     <None Remove="ClientApp\components\day4\day4.ts" />
     <None Remove="ClientApp\components\day5\day5.ts" />
     <None Remove="ClientApp\components\day6\day6.ts" />
+    <None Remove="ClientApp\test\day1\day1.spec.ts" />
     <None Remove="ClientApp\utils.ts" />
   </ItemGroup>
 
@@ -36,6 +37,7 @@
     <TypeScriptCompile Include="ClientApp\components\day5\day5.ts" />
     <TypeScriptCompile Include="ClientApp\components\day4\day4.ts" />
     <TypeScriptCompile Include="ClientApp\components\day6\day6.ts" />
+    <TypeScriptCompile Include="ClientApp\test\day1\day1.spec.ts" />
     <TypeScriptCompile Include="ClientApp\utils.ts" />
   </ItemGroup>
 
